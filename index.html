@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Redireccionando-Colibri Shop</title>
+</head>
+<body>
+    <p id="realizado"></p>
+    <script>
+        let redireccionRealizada = false;
+        // Obtiene el código de autorización de la URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const authorizationCode = urlParams.get('code');
+
+        // Envía el código de autorización a la aplicación Xamarin.Forms
+        window.location.href = `tuaplicacion://authresponse?code=${authorizationCode}`;
+        redireccionRealizada = true;
+        setTimeout(() => {
+            if (redireccionRealizada) {
+                document.getElementById("realizado").textContent ="La redirección fue exitosa.";
+            } else {
+                document.getElementById("realizado").textContent ="La redirección no se realizó.";
+            }
+        }, 5000);
+        
+    </script>
+</body>
+</html>
